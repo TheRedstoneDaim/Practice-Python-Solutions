@@ -15,3 +15,5 @@ if reversedWord == palindromeList:
     print("This word is a palindrome")
 else:
     print("This word isn't a palindrome")
+
+# Question from: https://www.practicepython.org/exercise/2014/03/12/06-string-lists.html
