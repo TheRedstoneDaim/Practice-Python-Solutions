@@ -1,0 +1,8 @@
+a = [1, 7, 98, 26, 16, 24]
+evenElements = []
+
+for i in range(len(a)):
+    if i % 2 == 0:
+        evenElements.append(a[i])
+
+print("The even elements are: %s" % ",".join(map(str, evenElements)))
