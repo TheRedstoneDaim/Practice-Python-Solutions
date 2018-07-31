@@ -1,5 +1,27 @@
 import random
 
+def addElement(letters, capitalLetters, numbers, specialCharacters):
+    character = random.randint(0, 3)
+    element = None
+    if character == 0:
+        element = random.choice(letters)
+    if character == 1:
+        element = random.choice(capitalLetters)
+    if character == 2:
+        element = random.choice(numbers)
+    if character == 3:
+        element = random.choice(specialCharacters)
+    return element
+
+def structurePassword(passwordList, passwordWords):
+    positionOfWord = random.randint(0, 1)
+    password = None
+    if positionOfWord == 0:
+        password = passwordWords[random.randint(0, len(passwordWords)-1)] + "".join(passwordList)
+    if positionOfWord == 1:
+        password = "".join(passwordList) + passwordWords[random.randint(0, len(passwordWords)-1)]
+    return password
+
 def generate(passwordStrength):
     letters = "qwertyuiopasdfghjklzxcvbnm"
     capitalLetters = "QWERTYUIOPASDFGHJKLZXCVBNM"
@@ -12,44 +34,20 @@ def generate(passwordStrength):
     # Weak Passwords
     if passwordStrength == "W" or passwordStrength == "w" or passwordStrength == "weak" or passwordStrength == "Weak":
 
-        passwordWords = ["password", "unbreakable", "user", "powerful"]
+        passwordWords = ["password", "lazy", "user", "loza"]
         for i in range(random.randint(1, 2)):
-            character = random.randint(0, 3)
-            if character == 0:
-                passwordList.append(random.choice(letters))
-            if character == 1:
-                passwordList.append(random.choice(capitalLetters))
-            if character == 2:
-                passwordList.append(random.choice(numbers))
-            if character == 3:
-                passwordList.append(random.choice(specialCharacters))
+            passwordList.append(addElement(letters, capitalLetters, numbers, specialCharacters))
 
-        positionOfWord = random.randint(0, 1)
-        if positionOfWord == 0:
-            password = passwordWords[random.randint(0, 3)] + "".join(passwordList)
-        if positionOfWord == 1:
-            password = "".join(passwordList) + passwordWords[random.randint(0, 3)]
+        password = structurePassword(passwordList, passwordWords)
 
     # Moderate Passwords
     if passwordStrength == "M" or passwordStrength == "m" or passwordStrength == "moderate" or passwordStrength == "Moderate":
         specialCharacters += "_!^*:&"
-        passwordWords = ["player", "child", "power", "loza", "lazy"]
+        passwordWords = ["player", "child", "power", "powerful", "unbreakable"]
         for i in range(random.randint(2, 4)):
-            character = random.randint(0, 3)
-            if character == 0:
-                passwordList.append(random.choice(letters))
-            if character == 1:
-                passwordList.append(random.choice(capitalLetters))
-            if character == 2:
-                passwordList.append(random.choice(numbers))
-            if character == 3:
-                passwordList.append(random.choice(specialCharacters))
+            passwordList.append(addElement(letters, capitalLetters, numbers, specialCharacters))
 
-        positionOfWord = random.randint(0, 1)
-        if positionOfWord == 0:
-            password = passwordWords[random.randint(0, 4)] + "".join(passwordList)
-        if positionOfWord == 1:
-            password = "".join(passwordList) + passwordWords[random.randint(0, 4)]
+        password = structurePassword(passwordList, passwordWords)
 
 
     # Strong Passwords
@@ -58,21 +56,9 @@ def generate(passwordStrength):
         passwordWords = ["paSswOrd", "uNbreaKaBlE", "uSeRheRE", "pOWerFUL"]
 
         for i in range(random.randint(2, 5)):
-            character = random.randint(0, 3)
-            if character == 0:
-                passwordList.append(random.choice(letters))
-            if character == 1:
-                passwordList.append(random.choice(capitalLetters))
-            if character == 2:
-                passwordList.append(random.choice(numbers))
-            if character == 3:
-                passwordList.append(random.choice(specialCharacters))
+            passwordList.append(addElement(letters, capitalLetters, numbers, specialCharacters))
 
-        positionOfWord = random.randint(0, 1)
-        if positionOfWord == 0:
-            password = passwordWords[random.randint(0, 3)] + "".join(passwordList)
-        if positionOfWord == 1:
-            password = "".join(passwordList) + passwordWords[random.randint(0, 3)]
+        password = structurePassword(passwordList, passwordWords)
 
     return password
 
